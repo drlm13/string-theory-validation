@@ -8,7 +8,7 @@
 
 ## Overview
 
-This repository contains the complete symbolic verification of the **CSU (Conformal Symmetry Unification)** string theory framework — the microscopic foundation for the zero-parameter derivation of the cosmological constant presented in the companion repository:
+This repository contains the complete symbolic verification of the **CSU (Chrono Singularity Unification)** string theory framework — the microscopic foundation for the zero-parameter derivation of the cosmological constant presented in the companion repository:
 
 👉 [cosmological-constant-derivation](https://github.com/drlm13/cosmological-constant-derivation)
 
