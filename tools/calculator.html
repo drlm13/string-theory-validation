@@ -39,20 +39,24 @@
             display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
             background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px;
         }
-        .tab-button {
-            padding: 12px 25px; background: rgba(100,181,246,0.1);
-            border: 2px solid rgba(100,181,246,0.3); color: #90caf9;
-            cursor: pointer; border-radius: 8px; font-size: 1em;
-            transition: all 0.3s ease; font-weight: 500;
+        .tab {
+            padding: 12px 24px;
+            background: rgba(100, 200, 255, 0.1);
+            border: 1px solid rgba(100, 200, 255, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #a0a0a0;
+            font-weight: 500;
         }
-        .tab-button:hover {
-            background: rgba(100,181,246,0.2); border-color: rgba(100,181,246,0.5);
+        .tab:hover {
+            background: rgba(100, 200, 255, 0.2);
             transform: translateY(-2px);
         }
-        .tab-button.active {
-            background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
-            border-color: #64b5f6; color: white;
-            box-shadow: 0 4px 15px rgba(30,136,229,0.4);
+        .tab.active {
+            background: linear-gradient(135deg, #64c8ff 0%, #4a9fd8 100%);
+            color: #0a0e27;
+            border-color: #64c8ff;
         }
         .tab-content {
             display: none; background: rgba(255,255,255,0.03); padding: 30px;
@@ -228,12 +232,12 @@
     </header>
 
     <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('derivation')">📐 Derivation Chain</button>
-        <button class="tab-button" onclick="switchTab('calculations')">🔢 Live Calculations</button>
-        <button class="tab-button" onclick="switchTab('scorecard')">📊 Scorecard</button>
-        <button class="tab-button" onclick="switchTab('validation')">✅ Validation Report</button>
-        <button class="tab-button" onclick="switchTab('falsification')">🔬 Falsification Tests</button>
-        <button class="tab-button" onclick="switchTab('comparison')">⚖️ CSU vs Standard</button>
+        <div class="tab active" onclick="showTab('derivation')">📐 Derivation Chain</div>
+        <div class="tab" onclick="showTab('calculations')">🔢 Live Calculations</div>
+        <div class="tab" onclick="showTab('scorecard')">📊 Scorecard</div>
+        <div class="tab" onclick="showTab('validation')">✅ Computational Validation</div>
+        <div class="tab" onclick="showTab('falsification')">🔬 Falsification Tests</div>
+        <div class="tab" onclick="showTab('comparison')">⚖️ CSU vs Standard</div>
     </div>
 
     <!-- ===================== TAB 1: DERIVATION CHAIN ===================== -->
@@ -503,7 +507,7 @@
             <div class="calc-panel">
                 <h4>🔢 SL(2,ℤ) Modular Invariance</h4>
                 <div class="equation">S² = −I, (ST)³ = −I</div>
-                <button onclick="calcSL2Z()" style="margin-bottom:15px">Verify SL(2,ℤ) Relations</button>
+                <button onclick="calcSL2Z()" style="margin-bottom:15px">Verify SL(2,ℤ) Relations</div>
                 <div class="results" id="sl2z-result"></div>
             </div>
 
@@ -512,7 +516,7 @@
                 <h4>⚛️ SM Field Count → k = 57</h4>
                 <div class="equation">k = N_UV − constraints = 66 − 9 = 57</div>
                 <div class="equation">α⁻¹ = nextprime(2·N_UV + 4) = nextprime(136) = 137</div>
-                <button onclick="calcFieldCount()" style="margin-bottom:15px">Compute Field Count</button>
+                <button onclick="calcFieldCount()" style="margin-bottom:15px">Compute Field Count</div>
                 <div class="results" id="field-result"></div>
             </div>
 
@@ -815,11 +819,16 @@
 
 <script>
 // ========== Tab Switching ==========
-function switchTab(tabId) {
+function showTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + tabId).classList.add('active');
-    event.target.classList.add('active');
+    // Find the tab that matches and activate it
+    document.querySelectorAll('.tab').forEach(tab => {
+        if (tab.getAttribute('onclick') && tab.getAttribute('onclick').includes(tabId)) {
+            tab.classList.add('active');
+        }
+    });
 }
 
 // ========== Expandable Steps ==========
