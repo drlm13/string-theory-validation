@@ -20,7 +20,7 @@ Starting from just 3 mathematical axioms (Z = 2, c* = 1/12, Holographic Saturati
 
 ### 🔢 Interactive Calculator
 
-**→ [Open the String Theory Calculator](tools/calculator.html)** — a complete interactive tool with:
+**→ [Open the String Theory Calculator](https://drlm13.github.io/string-theory-validation/tools/calculator.html)** — a complete interactive tool with:
 - 📐 **Derivation Chain** — 12-step logical flow from axioms to string theory
 - 🔢 **Live Calculations** — 10 interactive calculators (ghost charges, Virasoro, T-duality, Weyl tensor, CY topology, SL(2,ℤ), field counting, SUSY closure)
 - 📊 **Scorecard** — 24/24 predictions confirmed with zero free parameters
